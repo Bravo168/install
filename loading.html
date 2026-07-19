@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>VICI99</title>
+  <meta name="theme-color" content="#060606" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: #060606;
+      color: #fff;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    img {
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      border: 2px solid #d98c0e;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    p {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #f0b429;
+    }
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border: 3px solid rgba(240, 180, 41, 0.25);
+      border-top-color: #f0b429;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <img src="icons/icon-192.png" alt="" />
+  <div class="spinner" aria-hidden="true"></div>
+  <p>Loading VICI99</p>
+
+  <script>
+    window.location.href = "https://calculator.com/";
+  </script>
+</body>
+</html>

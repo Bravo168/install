@@ -1,6 +1,6 @@
 (function () {
   const cta = document.getElementById("install-cta");
-  const REDIRECT_URL = "https://calculator.com/";
+  const REDIRECT_URL = "./loading.html";
   let deferredPrompt = null;
 
   function isStandalone() {
