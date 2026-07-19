@@ -2,7 +2,7 @@
   "name": "VICI99",
   "short_name": "VICI99",
   "description": "VICI99 Lite App — akses lebih cepat dan stabil.",
-  "start_url": "./loading.html",
+  "start_url": "./install.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0a0a12",
