@@ -1,10 +1,12 @@
-const CACHE_NAME = "app-template-v3";
+const CACHE_NAME = "app-template-v4";
 const ASSETS = [
   "./style.css",
   "./app.js",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
+  "./icons/screenshot-narrow.png",
+  "./icons/screenshot-wide.png",
   "./install.html",
   "./install.css",
   "./install.js",
