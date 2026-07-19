@@ -1,7 +1,5 @@
-const CACHE_NAME = "app-template-v2";
+const CACHE_NAME = "app-template-v3";
 const ASSETS = [
-  "./",
-  "./index.html",
   "./style.css",
   "./app.js",
   "./manifest.json",
