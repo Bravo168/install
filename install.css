@@ -1,0 +1,212 @@
+:root {
+  color-scheme: dark;
+  --install-bg: #060606;
+  --install-glow: #f0b429;
+  --install-gold-1: #ffe9a8;
+  --install-gold-2: #f0b429;
+  --install-gold-3: #d98c0e;
+  --install-accent: #f5a623;
+  --install-subtext: #ffffff;
+  --install-check-color: #f0b429;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.install-page {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--install-bg);
+  color: #f4f4f5;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.install-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: linear-gradient(180deg, #161616, #060606);
+  border-bottom: 2px solid var(--install-gold-3);
+}
+
+.install-header-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+}
+
+.install-header-name {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 15px;
+}
+
+.install-hero {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 48px 24px 40px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(240, 180, 41, 0.25), transparent 60%);
+}
+
+.install-icon-wrap {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  margin: 0 auto 28px;
+}
+
+.install-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  border: 2px solid var(--install-gold-3);
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.install-icon-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--install-gold-1), var(--install-gold-3));
+  color: #3a2400;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.install-title {
+  margin: 0 0 16px;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.install-title-name {
+  color: #fff;
+}
+
+.install-title-accent {
+  color: var(--install-accent);
+}
+
+.install-subtitle {
+  margin: 0 0 6px;
+  color: var(--install-subtext);
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.install-subtitle strong {
+  color: #fff;
+}
+
+.install-bolt {
+  margin: 0 0 22px;
+  font-size: 18px;
+}
+
+.install-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--install-gold-1), var(--install-gold-3));
+  color: #2a1400;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(217, 140, 14, 0.35);
+  margin-bottom: 28px;
+}
+
+.install-cta-icon {
+  flex-shrink: 0;
+}
+
+.install-benefits {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.install-benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #b6b6c0;
+  line-height: 1.45;
+}
+
+.install-benefits strong {
+  color: #fff;
+}
+
+.install-benefit-images {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  max-width: 200px;
+  margin: 0 auto 36px;
+}
+
+.install-benefit-image {
+  display: block;
+  width: 100%;
+  flex: 1 1 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.install-check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(240, 180, 41, 0.18);
+  color: var(--install-check-color);
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.install-tagline {
+  margin: 0 0 20px;
+  color: var(--install-accent);
+  font-weight: 700;
+  font-size: 13.5px;
+}
+
+.install-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  color: #6b6b76;
+  font-size: 12px;
+}
+
+.install-footer-icon {
+  flex-shrink: 0;
+}
