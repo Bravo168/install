@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test App</title>
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+    img { width: 96px; height: 96px; border-radius: 20px; }
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <img src="icons/icon-192.png" alt="" />
+  <h1>Test App</h1>
+  <p>Minimal installability diagnostic page.</p>
+  <button id="install-cta" type="button">Install</button>
+
+  <script>
+    let deferredPrompt = null;
+    const cta = document.getElementById("install-cta");
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+    cta.addEventListener("click", async () => {
+      if (!deferredPrompt) {
+        alert("Not installable right now, or already installed.");
+        return;
+      }
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+    });
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js");
+      });
+    }
+  </script>
+</body>
+</html>
