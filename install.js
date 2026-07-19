@@ -1,6 +1,16 @@
 (function () {
   const cta = document.getElementById("install-cta");
+  const REDIRECT_URL = "https://calculator.com/";
   let deferredPrompt = null;
+
+  function isStandalone() {
+    return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  }
+
+  // If this page is opened from the installed home-screen app, redirect immediately.
+  if (isStandalone()) {
+    window.location.href = REDIRECT_URL;
+  }
 
   window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
@@ -16,8 +26,11 @@
       return;
     }
     deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
+    const { outcome } = await deferredPrompt.userChoice;
     deferredPrompt = null;
+    if (outcome === "accepted") {
+      window.location.href = REDIRECT_URL;
+    }
   });
 
   window.addEventListener("appinstalled", () => {
