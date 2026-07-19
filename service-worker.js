@@ -1,4 +1,4 @@
-const CACHE_NAME = "app-template-v1";
+const CACHE_NAME = "app-template-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,10 @@ const ASSETS = [
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
+  "./install.html",
+  "./install.css",
+  "./install.js",
+  "./loading.html",
 ];
 
 self.addEventListener("install", (event) => {

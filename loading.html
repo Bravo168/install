@@ -18,6 +18,8 @@
       align-items: center;
       justify-content: center;
       gap: 18px;
+      padding: 24px;
+      text-align: center;
       background: #060606;
       color: #fff;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -29,12 +31,22 @@
       border: 2px solid #d98c0e;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    p {
+    .status-title {
       margin: 0;
       font-size: 15px;
       font-weight: 700;
       letter-spacing: 0.03em;
       color: #f0b429;
+    }
+    .status-subtitle {
+      margin: 0;
+      font-size: 13px;
+      color: #9a9a9a;
+      max-width: 260px;
+      line-height: 1.5;
+    }
+    .status-subtitle[hidden] {
+      display: none;
     }
     .spinner {
       width: 22px;
@@ -44,6 +56,13 @@
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
     }
+    .offline-icon {
+      font-size: 34px;
+      line-height: 1;
+    }
+    .offline-icon[hidden] {
+      display: none;
+    }
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
@@ -51,11 +70,69 @@
 </head>
 <body>
   <img src="icons/icon-192.png" alt="" />
-  <div class="spinner" aria-hidden="true"></div>
-  <p>Loading VICI99</p>
+  <div class="spinner" id="spinner" aria-hidden="true"></div>
+  <span class="offline-icon" id="offlineIcon" aria-hidden="true" hidden>&#128246;</span>
+  <p class="status-title" id="statusTitle">Loading VICI99</p>
+  <p class="status-subtitle" id="statusSubtitle" hidden>
+    Tidak ada koneksi internet.<br />Mencoba menyambungkan kembali&hellip;
+  </p>
 
   <script>
-    window.location.href = "https://calculator.com/";
+    var TARGET_URL = "https://calculator.com/";
+    var RETRY_INTERVAL_MS = 3000;
+
+    var statusTitle = document.getElementById("statusTitle");
+    var statusSubtitle = document.getElementById("statusSubtitle");
+    var spinner = document.getElementById("spinner");
+    var offlineIcon = document.getElementById("offlineIcon");
+
+    var isOfflineState = false;
+    var retryTimer = null;
+
+    function showOffline() {
+      if (isOfflineState) return;
+      isOfflineState = true;
+      statusTitle.textContent = "Tidak ada koneksi internet";
+      statusSubtitle.hidden = false;
+      spinner.hidden = true;
+      offlineIcon.hidden = false;
+    }
+
+    function showReconnecting() {
+      statusTitle.textContent = "Menyambungkan kembali…";
+      statusSubtitle.hidden = true;
+      spinner.hidden = false;
+      offlineIcon.hidden = true;
+    }
+
+    function checkConnectivity() {
+      return fetch("./manifest.json", { cache: "no-store" })
+        .then(function () { return true; })
+        .catch(function () { return false; });
+    }
+
+    function attempt() {
+      if (!navigator.onLine) {
+        showOffline();
+        return;
+      }
+      showReconnecting();
+      checkConnectivity().then(function (online) {
+        if (online) {
+          window.location.href = TARGET_URL;
+        } else {
+          showOffline();
+        }
+      });
+    }
+
+    window.addEventListener("online", attempt);
+
+    retryTimer = setInterval(function () {
+      attempt();
+    }, RETRY_INTERVAL_MS);
+
+    attempt();
   </script>
 </body>
 </html>
